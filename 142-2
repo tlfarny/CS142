@@ -1,0 +1,61 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+const double PI = 3.14159;
+const double LPRICE = 14.68;
+const double MPRICE = 11.48;
+const double SPRICE = 7.28;
+const int LRAD = 10;
+const int MRAD = 8;
+const int SRAD = 6;
+
+void calcPizzas(int guests, int &lPizzas, int &mPizzas, int &sPizzas){
+  int remain = 0;
+  lPizzas = guests / 7;
+  remain = guests % 7;
+  mPizzas = remain / 3;
+  remain = remain % 3;
+  sPizzas = remain;
+}
+
+double calcCost(int lPizzas, int mPizzas, int sPizzas){
+  double cost = (lPizzas * LPRICE) + (mPizzas * MPRICE) + (sPizzas * SPRICE);
+  return cost;
+}
+
+double calcArea(int lPizzas, int mPizzas, int sPizzas){
+  double area = (lPizzas * (PI * LRAD * LRAD)) + (mPizzas * (PI * MRAD * MRAD)) + (sPizzas * (PI * SRAD * SRAD));
+  return area;
+}
+
+double round(double numIn){
+  return floor(numIn * 100 + 0.5) / 100;
+}
+
+int main(int argc, char const *argv[]) {
+  int guests;
+  int lPizzas;
+  int mPizzas;
+  int sPizzas;
+  int tip;
+  double tipAsPercent;
+  double cost;
+  double totalCost;
+  double totalArea;
+  cout<<"Enter the number of guests attending:"<<endl;
+  cin>>guests;
+  calcPizzas(guests, lPizzas, mPizzas, sPizzas);
+  cost = calcCost(lPizzas, mPizzas, sPizzas);
+  totalArea = calcArea(lPizzas, mPizzas, sPizzas);
+  cout<<"Enter the percentage that you would like to tip:"<<endl;
+  cin>>tip;
+  tipAsPercent = tip / 100.00;
+  cout<<"You will need to order "<<lPizzas<<" large pizzas, "<<mPizzas<<" medium pizzas, and "<<sPizzas<<" small pizzas in order to feed all "<<guests<<" guests."<<endl<<endl;
+  cout<<"This means that each guest will have "<<totalArea/guests<<" square inches of pizza."<<endl<<endl;
+  totalCost = cost + (cost * tipAsPercent);
+  cout<<"The total cost will be $"<<totalCost<<"."<<endl<<endl;
+  system("pause");
+  return 0;
+}
