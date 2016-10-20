@@ -1,6 +1,3 @@
 # CS142
-/*just getting a few notes in here.
-
-Travis Farnsworth of Springville UT
-Graduated from BYU with a Bachelor's in Exercise science and Computer Science.
-*/
+### Introduction to Computer Programming
+This was my first forray into programming. While the code is a little ugly in spots, I have since rewritten these projects for practice and reduced the code by over half in most cases.
